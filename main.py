@@ -19,12 +19,12 @@ async def main():
         print(f"Unable to initialize model client: {exc}")
         return
 
-    docker = getDockerCommandLineExecutor()
-    team = getDataAnalyzerTeam(docker, openai_model_client)
+    executor = getDockerCommandLineExecutor()
+    team = getDataAnalyzerTeam(executor, openai_model_client)
 
     try:
         task = "Can you give me a graph of survived and died in my data titanic.csv and save it as output.png"
-        await start_docker_container(docker)
+        await start_docker_container(executor)
 
         async for message in team.run_stream(task=task):
             print("=" * 40)
@@ -36,7 +36,7 @@ async def main():
     except Exception as exc:
         print(f"Analysis failed: {exc}")
     finally:
-        await stop_docker_container(docker)
+        await stop_docker_container(executor)
 
 
 if __name__ == "__main__":

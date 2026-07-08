@@ -6,9 +6,10 @@ dotenv
 openai
 tiktoken
 groq
-autogen-ext[docker]
 streamlit
 pandas
 matplotlib
 numpy
 seaborn
+scikit-learn
+pytest

@@ -32,6 +32,7 @@ if "current_output_path" not in st.session_state:
 
 WORK_DIR = Path(__file__).resolve().parent
 TEMP_DIR = WORK_DIR / "temp"
+WORKSPACE_DIR = WORK_DIR / "workspace"
 CSV_PATH = TEMP_DIR / "data.csv"
 DEFAULT_OUTPUT_PATH = TEMP_DIR / "output.png"
 
@@ -151,6 +152,7 @@ if st.session_state.pending_task:
         st.warning("Please upload a CSV file first.")
     else:
         TEMP_DIR.mkdir(parents=True, exist_ok=True)
+        WORKSPACE_DIR.mkdir(parents=True, exist_ok=True)
         with CSV_PATH.open("wb") as handle:
             handle.write(uploaded_file.getbuffer())
 

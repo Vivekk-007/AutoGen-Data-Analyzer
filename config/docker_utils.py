@@ -1,27 +1,18 @@
-from autogen_ext.code_executors.docker import DockerCommandLineCodeExecutor
-
-from config.constants import TIMEOUT_DOCKER, WORK_DIR_DOCKER
+# This module now wraps the local sandbox executor so the app no longer depends on Docker.
+from config.constants import TIMEOUT_LOCAL, WORKSPACE_DIR
+from config.local_utils import LocalSandboxCodeExecutor, get_local_code_executor
 
 
 def getDockerCommandLineExecutor():
-    WORK_DIR_DOCKER.mkdir(parents=True, exist_ok=True)
-    docker = DockerCommandLineCodeExecutor(
-        work_dir=str(WORK_DIR_DOCKER),
-        bind_dir=str(WORK_DIR_DOCKER),
-        timeout=TIMEOUT_DOCKER,
-        init_command="pip install --no-input pandas matplotlib numpy seaborn",
-    )
-
-    return docker
+    """Backward-compatible factory name for the new local executor."""
+    return get_local_code_executor()
 
 
 async def start_docker_container(docker):
-    print("Starting Docker Container")
+    """Compatibility shim for code that used to start a container."""
     await docker.start()
-    print("Docker Container Started")
 
 
 async def stop_docker_container(docker):
-    print("Stop Docker Container")
+    """Compatibility shim for code that used to stop a container."""
     await docker.stop()
-    print("Docker Container Stopped")
