@@ -8,3 +8,7 @@ tiktoken
 groq
 autogen-ext[docker]
 streamlit
+pandas
+matplotlib
+numpy
+seaborn

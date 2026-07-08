@@ -1,12 +1,17 @@
 from autogen_ext.code_executors.docker import DockerCommandLineCodeExecutor
 
-from config.constants import TIMEOUT_DOCKER,WORK_DIR_DOCKER
+from config.constants import TIMEOUT_DOCKER, WORK_DIR_DOCKER
+
 
 def getDockerCommandLineExecutor():
-    docker=DockerCommandLineCodeExecutor(
-        work_dir=WORK_DIR_DOCKER,
-        timeout=TIMEOUT_DOCKER)
-    
+    WORK_DIR_DOCKER.mkdir(parents=True, exist_ok=True)
+    docker = DockerCommandLineCodeExecutor(
+        work_dir=str(WORK_DIR_DOCKER),
+        bind_dir=str(WORK_DIR_DOCKER),
+        timeout=TIMEOUT_DOCKER,
+        init_command="pip install --no-input pandas matplotlib numpy seaborn",
+    )
+
     return docker
 
 
