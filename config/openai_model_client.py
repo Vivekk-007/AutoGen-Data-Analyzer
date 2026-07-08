@@ -12,6 +12,13 @@ def get_model_client():
         model="llama-3.3-70b-versatile",
         api_key=api_key,
         base_url="https://api.groq.com/openai/v1",
+        model_info={
+            "vision": False,
+            "function_calling": True,
+            "json_output": True,
+            "family": "unknown",
+            "structured_output": True,
+        },
     )
 
     return groq_model_client

@@ -1,0 +1,23 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the CSV file
+df = pd.read_csv('titanic.csv')
+
+# Count the number of survived and died passengers
+survived = len(df[df['Survived'] == 1])
+died = len(df[df['Survived'] == 0])
+
+# Create a bar chart
+plt.bar(['Survived', 'Died'], [survived, died])
+plt.xlabel('Status')
+plt.ylabel('Count')
+plt.title('Survived and Died Passengers')
+
+# Save the chart as output.png
+plt.savefig('output.png')
+
+# Show the chart
+plt.show()
+
+print("The task of creating a graph of survived and died passengers is completed.")
