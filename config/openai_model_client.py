@@ -4,21 +4,19 @@ import os
 
 load_dotenv()
 
-api_key = os.getenv("GROQ_API_KEY")
+api_key = os.getenv("GEMINI_API_KEY")
 
 
 def get_model_client():
-    groq_model_client = OpenAIChatCompletionClient(
-        model="llama-3.3-70b-versatile",
+    return OpenAIChatCompletionClient(
+        model="gemini-2.5-flash",
         api_key=api_key,
-        base_url="https://api.groq.com/openai/v1",
+        base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
         model_info={
-            "vision": False,
+            "vision": True,
             "function_calling": True,
             "json_output": True,
-            "family": "unknown",
+            "family": "gemini",
             "structured_output": True,
         },
     )
-
-    return groq_model_client

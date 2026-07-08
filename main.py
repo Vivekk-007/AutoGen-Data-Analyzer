@@ -5,6 +5,7 @@ from config.docker_utils import getDockerCommandLineExecutor,start_docker_contai
 from autogen_agentchat.messages import TextMessage
 from autogen_agentchat.base import TaskResult
 
+
 async def main():
     openai_model_client = get_model_client()
     docker = getDockerCommandLineExecutor()

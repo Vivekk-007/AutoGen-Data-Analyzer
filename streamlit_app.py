@@ -9,7 +9,7 @@ from autogen_agentchat.base import TaskResult
 from config.openai_model_client import get_model_client
 from config.docker_utils import getDockerCommandLineExecutor,start_docker_container,stop_docker_container
 
-st.title('Analyzer GPT - Digital Data Analyzer')
+st.title('Digital Data Analyzer')
 
 uploaded_file = st.file_uploader('Upload your CSV file',type='csv')
 

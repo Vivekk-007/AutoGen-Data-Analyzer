@@ -5,8 +5,7 @@ from config.constants import TIMEOUT_DOCKER,WORK_DIR_DOCKER
 def getDockerCommandLineExecutor():
     docker=DockerCommandLineCodeExecutor(
         work_dir=WORK_DIR_DOCKER,
-        timeout=TIMEOUT_DOCKER
-        )
+        timeout=TIMEOUT_DOCKER)
     
     return docker
 
